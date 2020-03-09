@@ -17,6 +17,7 @@
 		2C854CD72416E8C40095045A /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C854CD62416E8C40095045A /* SongTableViewCell.swift */; };
 		2C854CD92416EA640095045A /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C854CD82416EA640095045A /* Album.swift */; };
 		2C854CDB2416EEE90095045A /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C854CDA2416EEE90095045A /* exampleAlbum.json */; };
+		2C854CDD2416F06D0095045A /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C854CDC2416F06D0095045A /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2C854CD62416E8C40095045A /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		2C854CD82416EA640095045A /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		2C854CDA2416EEE90095045A /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		2C854CDC2416F06D0095045A /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				2C854CD82416EA640095045A /* Album.swift */,
+				2C854CDC2416F06D0095045A /* AlbumController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				2C09F1952416E0D000B9ABEE /* AlbumsTableViewController.swift in Sources */,
 				2C854CD72416E8C40095045A /* SongTableViewCell.swift in Sources */,
 				2C854CD42416E6720095045A /* AlbumDetailTableViewController.swift in Sources */,
+				2C854CDD2416F06D0095045A /* AlbumController.swift in Sources */,
 				2C09F17E2416DFE100B9ABEE /* SceneDelegate.swift in Sources */,
 				2C854CD92416EA640095045A /* Album.swift in Sources */,
 			);
