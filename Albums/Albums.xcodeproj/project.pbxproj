@@ -15,6 +15,8 @@
 		2C0BB73A243BBD3400BAB883 /* AlbumsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BB739243BBD3400BAB883 /* AlbumsTableViewController.swift */; };
 		2C0BB73C243BC0F300BAB883 /* AlbumDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BB73B243BC0F300BAB883 /* AlbumDetailTableViewController.swift */; };
 		2C0BB73E243BC3F900BAB883 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BB73D243BC3F900BAB883 /* SongTableViewCell.swift */; };
+		2C0BB742243BC75900BAB883 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0BB741243BC75900BAB883 /* Album.swift */; };
+		2C0BB744243BC78700BAB883 /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0BB743243BC78700BAB883 /* exampleAlbum.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		2C0BB739243BBD3400BAB883 /* AlbumsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewController.swift; sourceTree = "<group>"; };
 		2C0BB73B243BC0F300BAB883 /* AlbumDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailTableViewController.swift; sourceTree = "<group>"; };
 		2C0BB73D243BC3F900BAB883 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		2C0BB741243BC75900BAB883 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		2C0BB743243BC78700BAB883 /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			children = (
 				2C0BB736243BBBF900BAB883 /* Application */,
 				2C0BB737243BBC0200BAB883 /* Storyboards */,
+				2C0BB740243BC73B00BAB883 /* Models */,
 				2C0BB73F243BC47500BAB883 /* Views */,
 				2C0BB738243BBD1200BAB883 /* View Controllers */,
 				2C0BB735243BBBE600BAB883 /* Resources */,
@@ -72,6 +77,7 @@
 		2C0BB735243BBBE600BAB883 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C0BB743243BC78700BAB883 /* exampleAlbum.json */,
 				2C0BB72A243BBBA500BAB883 /* Assets.xcassets */,
 				2C0BB72F243BBBA500BAB883 /* Info.plist */,
 			);
@@ -111,6 +117,14 @@
 				2C0BB73D243BC3F900BAB883 /* SongTableViewCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		2C0BB740243BC73B00BAB883 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C0BB741243BC75900BAB883 /* Album.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +187,7 @@
 			files = (
 				2C0BB72E243BBBA500BAB883 /* LaunchScreen.storyboard in Resources */,
 				2C0BB72B243BBBA500BAB883 /* Assets.xcassets in Resources */,
+				2C0BB744243BC78700BAB883 /* exampleAlbum.json in Resources */,
 				2C0BB729243BBBA400BAB883 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +204,7 @@
 				2C0BB73E243BC3F900BAB883 /* SongTableViewCell.swift in Sources */,
 				2C0BB73C243BC0F300BAB883 /* AlbumDetailTableViewController.swift in Sources */,
 				2C0BB724243BBBA400BAB883 /* SceneDelegate.swift in Sources */,
+				2C0BB742243BC75900BAB883 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
