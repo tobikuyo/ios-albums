@@ -15,6 +15,38 @@ struct Album: Decodable {
     let id: String
     let name: String
     let songs: [Song]
+    
+    enum AlbumKeys: String, CodingKey {
+        case artist
+        case covertArt
+        case genres
+        case id
+        case name
+        case songs
+    }
+    
+    enum CovertArtKeys: String, CodingKey {
+        case url
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: AlbumKeys.self)
+        let coverArtContainer = try container.nestedContainer(keyedBy: CovertArtKeys.self, forKey: .covertArt)
+        var genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        
+        var genresList: [String] = []
+        while !genresContainer.isAtEnd {
+            let genre = try genresContainer.decode(String.self)
+            genresList.append(genre)
+        }
+        
+        artist = try container.decode(String.self, forKey: .artist)
+        coverArt = try coverArtContainer.decode([URL].self, forKey: .url)
+        genres = genresList
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        songs = try container.decode([Song].self, forKey: .songs)
+    }
 }
 
 struct Song: Decodable {
