@@ -10,6 +10,39 @@ import Foundation
 
 class AlbumController {
     
+    // MARK: - Properties
+    
+    var albums: [Album] = []
+    let baseURL = URL(string: "https://albums-2c073.firebaseio.com/")!
+    
+    // MARK: - Firebase Methods
+    
+    func getAlbums(completion: @escaping (Error?) -> Void) {
+        URLSession.shared.dataTask(with: URLRequest(url: baseURL)) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching albums from database: \(error)")
+                completion(error)
+            }
+            
+            guard let data = data else {
+                NSLog("No data fetched from Firebase")
+                return
+            }
+            
+            do {
+                let albumJSON = try JSONDecoder().decode([String: Album].self, from: data).map { $0.value }
+                self.albums = albumJSON
+            } catch {
+                NSLog("Error decoding album data: \(error)")
+                completion(error)
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
+    // MARK: - Testing Methods
+    
     func testDecodingExampleAlbum() {
         let urlPath = Bundle.main.path(forResource: "exampleAlbum", ofType: "json")!
         guard let urlPathURL = URL(string: urlPath) else { return }
