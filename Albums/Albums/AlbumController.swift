@@ -15,13 +15,18 @@ class AlbumController {
     var albums: [Album] = []
     let baseURL = URL(string: "https://albums-2c073.firebaseio.com/")!
     
+    typealias CompletionHandler = (Error?) -> Void
+    
     // MARK: - Firebase Methods
     
-    func getAlbums(completion: @escaping (Error?) -> Void) {
-        URLSession.shared.dataTask(with: URLRequest(url: baseURL)) { data, _, error in
+    func getAlbums(completion: @escaping CompletionHandler) {
+        let requestURL = baseURL.appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: requestURL) { data, _, error in
             if let error = error {
                 NSLog("Error fetching albums from database: \(error)")
                 completion(error)
+                return
             }
             
             guard let data = data else {
@@ -35,6 +40,34 @@ class AlbumController {
             } catch {
                 NSLog("Error decoding album data: \(error)")
                 completion(error)
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
+    func put(album: Album, completion: @escaping CompletionHandler) {
+        let requestURL = baseURL
+            .appendingPathComponent(album.id)
+            .appendingPathExtension("json")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        do {
+            let albumData = try JSONEncoder().encode(album)
+            request.httpBody = albumData
+        } catch {
+            NSLog("Error encoding album data: \(error)")
+            completion(error)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error PUTting album data in database: \(error)")
+                completion(error)
+                return
             }
             
             completion(nil)
