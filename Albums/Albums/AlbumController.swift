@@ -80,6 +80,21 @@ class AlbumController {
         put(album: album)
     }
     
+    func update(album: Album, called name: String, by artist: String, songs: [Song], genres: [String], coverArt: [URL], id: String) {
+        guard let index = albums.firstIndex(of: album) else { return }
+        var updatedAlbum = album
+        
+        updatedAlbum.name = name
+        updatedAlbum.artist = artist
+        updatedAlbum.songs = songs
+        updatedAlbum.genres = genres
+        updatedAlbum.coverArt = coverArt
+        updatedAlbum.id = id
+        
+        albums[index] = updatedAlbum
+        put(album: updatedAlbum)
+    }
+    
     // MARK: - Testing Methods
     
     func testDecodingExampleAlbum() {
