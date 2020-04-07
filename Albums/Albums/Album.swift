@@ -29,6 +29,15 @@ struct Album: Codable {
         case url
     }
     
+    init(artist: String, coverArt: [URL], genres: [String], id: String, name: String, songs: [Song]) {
+        self.artist = artist
+        self.coverArt = coverArt
+        self.genres = genres
+        self.id = id
+        self.name = name
+        self.songs = songs
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumKeys.self)
         let coverArtContainer = try container.nestedContainer(keyedBy: CovertArtKeys.self, forKey: .covertArt)
