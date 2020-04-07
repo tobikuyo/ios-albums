@@ -19,7 +19,7 @@ class AlbumController {
     
     // MARK: - Firebase Methods
     
-    func getAlbums(completion: @escaping CompletionHandler) {
+    func getAlbums(completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL.appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: requestURL) { data, _, error in
@@ -46,7 +46,7 @@ class AlbumController {
         }.resume()
     }
     
-    func put(album: Album, completion: @escaping CompletionHandler) {
+    func put(album: Album, completion: @escaping CompletionHandler = { _ in }) {
         let requestURL = baseURL
             .appendingPathComponent(album.id)
             .appendingPathExtension("json")
@@ -74,29 +74,34 @@ class AlbumController {
         }.resume()
     }
     
+    func createAlbum(called name: String, by artist: String, songs: [Song], genres: [String], coverArt: [URL], id: String) {
+        let album = Album(artist: artist, coverArt: coverArt, genres: genres, id: id, name: name, songs: songs)
+        albums.append(album)
+        put(album: album)
+    }
+    
     // MARK: - Testing Methods
     
     func testDecodingExampleAlbum() {
-        let urlPath = Bundle.main.path(forResource: "exampleAlbum", ofType: "json")!
-        guard let urlPathURL = URL(string: urlPath) else { return }
+        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
         
         do {
-            let data = try Data(contentsOf: urlPathURL)
-            _ = try JSONDecoder().decode(Album.self, from: data)
+            let data = try Data(contentsOf: urlPath)
+            let album = try JSONDecoder().decode(Album.self, from: data)
+            print(album)
         } catch {
             NSLog("Error decoding Album Model: \(error)")
         }
     }
     
     func testEncodingExampleAlbum() {
-        let urlPath = Bundle.main.path(forResource: "exampleAlbum", ofType: "json")!
-        guard let urlPathURL = URL(string: urlPath) else { return }
+        let urlPath = Bundle.main.url(forResource: "exampleAlbum", withExtension: "json")!
         
         do {
-            let data = try Data(contentsOf: urlPathURL)
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            _ = try encoder.encode(data)
+            let data = try Data(contentsOf: urlPath)
+            let album = try JSONEncoder().encode(data)
+            let albumString = String(data: album, encoding: .utf8)
+            print(albumString)
         } catch {
             NSLog("Error encoding Album Model: \(error)")
         }
